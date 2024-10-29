@@ -12,7 +12,7 @@ public class View {
     }
 
     public void escolherCava() {
-        System.out.println("Escolha uma cava: ");
+        System.out.print("Escolha uma cava: ");
     }
 
     public void numeroInvalido() {
@@ -24,8 +24,7 @@ public class View {
     }
 
     public void proximaAcao() {
-        System.out.println("O que deseja fazer agora?\n\n 1 - Próxima Jogada\n 2 - Capturar Semente(s)\\n" + //
-                "3 - Mostrar Tabuleiro Novamente\n 4 - Finalizar Jogo\n ->  Ação: ");
+        System.out.print("O que deseja fazer agora?\n\n 1 - Próxima Jogada\n 2 - Capturar Semente(s)\n 3 - Mostrar Tabuleiro Novamente\n 4 - Finalizar Jogo\n ->  Ação: ");
     }
 
     public void capturarSementeCava() {

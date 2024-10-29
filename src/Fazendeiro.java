@@ -5,6 +5,7 @@ public class Fazendeiro {
     }
 
     // Distribui as sementes da cava escolhida
+    @SuppressWarnings("rawtypes")
     public ArrayList distribuirSementes(int cavaEscolhida, ArrayList<CavaSimples> cavasSimples) {
         CavaSimples inicial = cavasSimples.get(cavaEscolhida);
         int cavaAtual = cavaEscolhida;

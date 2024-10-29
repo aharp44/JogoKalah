@@ -21,6 +21,7 @@ public class Fazenda
     }
     
     // Instancia a func distribuirSementes em Fazendeiro
+    @SuppressWarnings("unchecked")
     public void distribuirSementes(int cavaEscolhida){
         cavasSimples = player1.distribuirSementes(cavaEscolhida, cavasSimples);
     }
