@@ -1,5 +1,3 @@
-
-
 public class Cava
 {
     // variáveis de instância - substitua o exemplo abaixo pelo seu próprio
