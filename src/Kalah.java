@@ -22,9 +22,7 @@ public class Kalah {
         acao = input.sistemaDecisao();
         switch(acao){
             case 1: input.escolherCava(); break;
-            //case 2: implementar exibição do capturar sementes, sistema já está pronto
-            case 3: visualizar.mostrarTabuleiro(fazenda.getArrayCavas(), fazenda.getSilo1(), fazenda.getSilo2()); break;
-            case 4: visualizar.encerrarJogo(); System.exit(0); break;
+            case 2: visualizar.interromperJogo(); System.exit(0); break;
         }
     }
 }

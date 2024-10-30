@@ -24,7 +24,7 @@ public class Input
                 r = true;
             } else if (s.equals("N") || s.equals("n")){
                 b = true;
-                view.encerrarJogo();
+                view.interromperJogo();
                 System.exit(0);
             } else{
                 view.mostrarIniciarJogoErro();
@@ -73,12 +73,12 @@ public class Input
         boolean valido = false;
         int acao = 0;
 
-        // Repete loop ateh usuario colocar um valor entre 1 e 4
+        // Repete loop ateh usuario colocar um valor entre 1 e 2
         do{
             try{
                 view.proximaAcao();
                 acao = scanner.nextInt();
-                if (acao > 0 && acao < 5){
+                if (acao > 0 && acao < 3){
                     valido = true;
                 } else{
                     view.acaoInvalida();

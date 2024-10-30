@@ -24,7 +24,7 @@ public class View {
     }
 
     public void proximaAcao() {
-        System.out.print("O que deseja fazer agora?\n\n 1 - Próxima Jogada\n 2 - Capturar Semente(s)\n 3 - Mostrar Tabuleiro Novamente\n 4 - Finalizar Jogo\n ->  Ação: ");
+        System.out.print("O que deseja fazer agora?\n\n 1 - Próxima Jogada\n 2 - Interromper Jogo\n ->  Ação: ");
     }
 
     public void capturarSementeCava() {
@@ -32,8 +32,8 @@ public class View {
                 "De qual cava você deseja capturar as sementes adversárias?\n Requisito: A quantidade de sementes na sua cava deve ser igual a 1!");
     }
 
-    public void encerrarJogo(){
-        System.out.println("O jogo será encerrado\n\n\n");
+    public void interromperJogo(){
+        System.out.println("O jogo foi interrompido\n\n\n");
     }
 
     // Imprime tds as cavas e silos
