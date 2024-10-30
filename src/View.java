@@ -1,39 +1,52 @@
 import java.util.ArrayList;
 
-public class View
-{
+public class View {
+    public View() {}
 
-    
-    public View()
-    {
-        
+    public void mostrarIniciarJogo() {
+        System.out.print("Deseja iniciar jogo? (S/N): ");
     }
 
-    public void mostrarIniciarJogo(){
-        System.out.println("Deseja iniciar jogo? (S/N): ");
-    }
-    
-    public void mostrarIniciarJogoErro(){
+    public void mostrarIniciarJogoErro() {
         System.out.println("Insira S ou N apenas.");
     }
-    
-    public void escolherCava(){
-        System.out.println("Escolha uma cava: ");
+
+    public void escolherCava() {
+        System.out.print("Escolha uma cava: ");
     }
-    
-    public void numeroInvalido(){
+
+    public void numeroInvalido() {
         System.out.println("Insira um numero entre 1 e 12 apenas: ");
     }
-    
+
+    public void acaoInvalida() {
+        System.out.println("Insira um numero entre 1 e 3 apenas: ");
+    }
+
+    public void proximaAcao() {
+        System.out.print("O que deseja fazer agora?\n\n 1 - Próxima Jogada\n 2 - Capturar Semente(s)\n 3 - Mostrar Tabuleiro Novamente\n 4 - Finalizar Jogo\n ->  Ação: ");
+    }
+
+    public void capturarSementeCava() {
+        System.out.print(
+                "De qual cava você deseja capturar as sementes adversárias?\n Requisito: A quantidade de sementes na sua cava deve ser igual a 1!");
+    }
+
+    public void encerrarJogo(){
+        System.out.println("O jogo será encerrado\n\n\n");
+    }
+
     // Imprime tds as cavas e silos
-    public void mostrarTabuleiro(ArrayList<CavaSimples> cavasSimples, Silo silo1, Silo silo2){
-        for(int i=0; i<12; i++){
+    public void mostrarTabuleiro(ArrayList<CavaSimples> cavasSimples, Silo silo1, Silo silo2) {
+        for (int i = 0; i < 12; i++) {
             int c = cavasSimples.get(i).getQntSementes();
-            System.out.println("Cava [" + i + "]: " + c + " sem");
+            System.out.println("Cava [" + i + "]: " + c + " sementes");
         }
+
         int s1 = silo1.getQntSementes();
-        System.out.println("Silo 1: " + s1 + " sem");
         int s2 = silo2.getQntSementes();
-        System.out.println("Silo 2: " + s2 + " sem");
+        System.out.println();
+        System.out.println("Silo 1: " + s1 + " sementes");
+        System.out.println("Silo 2: " + s2 + " sementes");
     }
 }
