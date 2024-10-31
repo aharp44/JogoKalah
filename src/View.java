@@ -16,11 +16,19 @@ public class View {
     }
 
     public void numeroInvalido() {
-        System.out.println("Insira um numero entre 1 e 12 apenas: ");
+        System.out.println("Insira um valor numérico ");
+    }
+
+    public void numeroInvalidoFazendeiro1() {
+        System.out.println("Insira um numero entre 0 e 5 apenas: ");
+    }
+
+    public void numeroInvalidoFazendeiro2() {
+        System.out.println("Insira um numero entre 6 e 11 apenas: ");
     }
 
     public void acaoInvalida() {
-        System.out.println("Insira um numero entre 1 e 3 apenas: ");
+        System.out.println("Insira um 1 ou 2 apenas ");
     }
 
     public void proximaAcao() {
@@ -33,11 +41,20 @@ public class View {
     }
 
     public void interromperJogo(){
-        System.out.println("O jogo foi interrompido\n\n\n");
+        System.out.println("O jogo foi interrompido\n\n");
+    }
+
+    // Mostra visualmente qual fazendeiro irá jogar agora
+    public void vezJogador(int fazendeiro){
+        if(fazendeiro == 1){
+            System.out.println("\nVez do Fazendeiro 1");
+        }else{
+            System.out.println("\nVez do Fazendeiro 2");
+        }
     }
 
     // Imprime tds as cavas e silos
-    public void mostrarTabuleiro(ArrayList<CavaSimples> cavasSimples, Silo silo1, Silo silo2) {
+    public void mostrarTabuleiro(ArrayList<CavaSimples> cavasSimples, Silo silo1, Silo silo2, int fazendeiro) {
         for (int i = 0; i < 12; i++) {
             int c = cavasSimples.get(i).getQntSementes();
             System.out.println("Cava [" + i + "]: " + c + " sementes");

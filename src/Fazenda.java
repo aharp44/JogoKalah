@@ -6,8 +6,9 @@ public class Fazenda
     ArrayList<CavaSimples> cavasSimples = new ArrayList<CavaSimples>();
     Silo silo1 = new Silo();
     Silo silo2 = new Silo();
-    Fazendeiro player1 = new Fazendeiro();
-    Fazendeiro player2 = new Fazendeiro();
+    Fazendeiro fazendeiro1 = new Fazendeiro();
+    Fazendeiro fazendeiro2 = new Fazendeiro();
+    Input inp = new Input();
     
     public Fazenda(){}
     
@@ -22,8 +23,20 @@ public class Fazenda
     
     // Instancia a func distribuirSementes em Fazendeiro
     @SuppressWarnings("unchecked")
-    public void distribuirSementes(int cavaEscolhida){
-        cavasSimples = player1.distribuirSementes(cavaEscolhida, cavasSimples);
+    public void distribuirSementes(int cavaEscolhida, int fazendeiro){
+        if(fazendeiro == 1 && cavaEscolhida >= 0 && cavaEscolhida < 6){
+            cavasSimples = fazendeiro1.distribuirSementes(cavaEscolhida, cavasSimples);
+        }else{
+            if(fazendeiro == 2 && cavaEscolhida >= 6 && cavaEscolhida < 12){
+                cavasSimples = fazendeiro2.distribuirSementes(cavaEscolhida, cavasSimples);
+            }else{
+                if(fazendeiro == 1){
+                    System.out.println("Fazendeiro 1, escolha uma cava entre 0 e 5");
+                }else{
+                    System.out.println("Fazendeiro 2, escolha uma cava entre 6 e 11");
+                }
+            }
+        }
     }
     
     // Retorna o array cavasSimples
