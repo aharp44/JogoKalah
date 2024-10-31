@@ -22,9 +22,9 @@ public class Fazenda
     
     // Instancia a func distribuirSementes em Fazendeiro
     @SuppressWarnings("unchecked")
-    public void distribuirSementes(int cavaEscolhida){
+    public void distribuirSementes(int cavaEscolhida, int fazendeiro){
         // Calcula a nova qnt de sementes em cada cava e cada silo
-        cavasSimples = fazend.distribuirSementes(cavaEscolhida, cavasSimples);
+        cavasSimples = fazend.distribuirSementes(cavaEscolhida, cavasSimples, fazendeiro);
         silo1.addSementes(fazend.getQntSementesAdicionaisS1());
         silo2.addSementes(fazend.getQntSementesAdicionaisS2());
     }
@@ -36,6 +36,11 @@ public class Fazenda
 
     public int getVencedor(){
         return fazend.getVencedor(silo1, silo2);
+    }
+
+    // Retorna TRUE caso o jogador ganhe mais uma jogada
+    public boolean getMaisUmaJogada(){
+        return fazend.getMaisUmaJogada();
     }
     
     // Retorna o array cavasSimples

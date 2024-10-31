@@ -32,6 +32,12 @@ public class CavaSimples
             case 3: idOposta = 8; break;
             case 4: idOposta = 7; break;
             case 5: idOposta = 6; break;
+            case 6: idOposta = 5; break;
+            case 7: idOposta = 4; break;
+            case 8: idOposta = 3; break;
+            case 9: idOposta = 2; break;
+            case 10: idOposta = 1; break;
+            case 11: idOposta = 0; break;
         }
         return idOposta;
     }

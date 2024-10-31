@@ -36,7 +36,7 @@ public class View {
     }
 
     public void proximaAcao() {
-        System.out.print("O que deseja fazer agora?\n\n 1 - Proxima Jogada\n 2 - Interromper Jogo\n ->  Acao: ");
+        System.out.print("O que deseja fazer agora?\n 1 - Proxima Jogada\n 2 - Interromper Jogo\n ->  Acao: ");
     }
 
     public void capturarSementeCava() {
@@ -69,14 +69,23 @@ public class View {
 
     // Imprime tds as cavas e silos
     public void mostrarTabuleiro(ArrayList<CavaSimples> cavasSimples, Silo silo1, Silo silo2, int fazendeiro) {
-        for (int i = 0; i < 12; i++) {
+        System.out.println();
+        int s2 = silo2.getQntSementes();
+        System.out.print("Silo 2: " + s2 + " ");
+        
+        for (int i = 11; i > 5; i--) {
             int c = cavasSimples.get(i).getQntSementes();
-            System.out.println("Cava [" + i + "]: " + c + " sementes");
+            System.out.print("Cava [" + i + "]: " + c + " || ");
+        }
+        System.out.println();
+        System.out.print("          ");
+        for (int i = 0; i < 6; i++) {
+            int c = cavasSimples.get(i).getQntSementes();
+            System.out.print("Cava [" + i + "]: " + c + " || ");
         }
 
         int s1 = silo1.getQntSementes();
-        int s2 = silo2.getQntSementes();
-        System.out.println("Silo 1: " + s1 + " sementes");
-        System.out.println("Silo 2: " + s2 + " sementes");
+        System.out.println("Silo 1: " + s1 + " ");
+        System.out.println();
     }
 }
