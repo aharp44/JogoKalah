@@ -41,22 +41,22 @@ public class Input {
 
     // Habilita ao jogador a possibilidade de escolher uma cava
     public int escolherCava(int fazendeiro) {
-        view.escolherCava();
+        view.escolherCava(fazendeiro);
         int posicao = 0;
 
-        // Repete loop ateh usuario colocar um valor entre 0 e 11
+        // Repete loop ateh usuario1 colocar entre 0 e 5, ou o usuario2 colocar entre 6 e 11
         try {
             posicao = scanner.nextInt();
             if (fazendeiro == 1) {
                 while (posicao < 0 || posicao > 5) {
-                    view.numeroInvalidoFazendeiro1();
-                    view.escolherCava();
+                    view.numeroInvalido(fazendeiro);
+                    view.escolherCava(fazendeiro);
                     posicao = scanner.nextInt();
                 }
             } else {
                 while (posicao < 6 || posicao > 11) {
-                    view.numeroInvalidoFazendeiro2();
-                    view.escolherCava();
+                    view.numeroInvalido(fazendeiro);
+                    view.escolherCava(fazendeiro);
                     posicao = scanner.nextInt();
 
                 }
@@ -65,7 +65,7 @@ public class Input {
 
         // Printa um erro caso usuario coloque algo q n seja um int
         catch (InputMismatchException e) {
-            view.numeroInvalido();
+            view.valorInvalido();
         }
         return posicao;
     }
