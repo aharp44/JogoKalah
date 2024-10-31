@@ -11,40 +11,54 @@ public class View {
         System.out.println("Insira S ou N apenas.");
     }
 
-    public void escolherCava() {
-        System.out.print("Escolha uma cava: ");
+    public void escolherCava(int faz) {
+        if(faz == 1){
+            System.out.print("Escolha uma cava entre 0 e 5: ");
+        }else{
+            System.out.print("Escolha uma cava entre 6 e 11: ");
+        }
     }
 
-    public void numeroInvalido() {
-        System.out.println("Insira um valor numérico ");
+    public void valorInvalido() {
+        System.out.println("Insira um valor numerico. ");
     }
 
-    public void numeroInvalidoFazendeiro1() {
-        System.out.println("Insira um numero entre 0 e 5 apenas: ");
-    }
-
-    public void numeroInvalidoFazendeiro2() {
-        System.out.println("Insira um numero entre 6 e 11 apenas: ");
+    public void numeroInvalido(int faz) {
+        if(faz == 1){
+            System.out.println("Insira um numero entre 0 e 5 apenas. ");
+        }else{
+            System.out.println("Insira um numero entre 6 e 11 apenas. ");
+        }
     }
 
     public void acaoInvalida() {
-        System.out.println("Insira um 1 ou 2 apenas ");
+        System.out.println("Insira um 1 ou 2 apenas.");
     }
 
     public void proximaAcao() {
-        System.out.print("O que deseja fazer agora?\n\n 1 - Próxima Jogada\n 2 - Interromper Jogo\n ->  Ação: ");
+        System.out.print("O que deseja fazer agora?\n\n 1 - Proxima Jogada\n 2 - Interromper Jogo\n ->  Acao: ");
     }
 
     public void capturarSementeCava() {
         System.out.print(
-                "De qual cava você deseja capturar as sementes adversárias?\n Requisito: A quantidade de sementes na sua cava deve ser igual a 1!");
+                "De qual cava você deseja capturar as sementes adversarias?\n Requisito: A quantidade de sementes na sua cava deve ser igual a 1!");
     }
 
     public void interromperJogo(){
         System.out.println("O jogo foi interrompido\n\n");
     }
 
-    // Mostra visualmente qual fazendeiro irá jogar agora
+    public void fimDeJogo(int vencedor){
+        System.out.println("Fim de jogo! Vencedor: ");
+        // Verifica se houve empate
+        if (vencedor == 0){
+            System.out.print("nao ha vencedores, houve empate!");
+        }else{
+            System.out.print(vencedor);
+        }
+    }
+
+    // Mostra visualmente qual fazendeiro ira jogar agora
     public void vezJogador(int fazendeiro){
         if(fazendeiro == 1){
             System.out.println("\nVez do Fazendeiro 1");
@@ -62,7 +76,6 @@ public class View {
 
         int s1 = silo1.getQntSementes();
         int s2 = silo2.getQntSementes();
-        System.out.println();
         System.out.println("Silo 1: " + s1 + " sementes");
         System.out.println("Silo 2: " + s2 + " sementes");
     }

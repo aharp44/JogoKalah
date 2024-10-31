@@ -24,7 +24,7 @@ public class Kalah {
         if (input.iniciarJogo()) {
             fazenda.iniciarJogo();
             visualizar.vezJogador(fazendeiro);
-            fazenda.distribuirSementes(input.escolherCava(fazendeiro), fazendeiro);
+            fazenda.distribuirSementes(input.escolherCava(fazendeiro));
             trocarTurno(fazendeiro);
             input.mostrarTabuleiro(fazenda.getArrayCavas(), fazenda.getSilo1(), fazenda.getSilo2(), fazendeiro);
         }
@@ -35,7 +35,7 @@ public class Kalah {
             switch (acao) {
                 case 1:
                     visualizar.vezJogador(fazendeiro);
-                    fazenda.distribuirSementes(input.escolherCava(fazendeiro), fazendeiro);
+                    fazenda.distribuirSementes(input.escolherCava(fazendeiro));
                     input.mostrarTabuleiro(fazenda.getArrayCavas(), fazenda.getSilo1(), fazenda.getSilo2(), fazendeiro);
                     acao = input.sistemaDecisao();
                     trocarTurno(fazendeiro);
