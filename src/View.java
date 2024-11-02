@@ -11,11 +11,11 @@ public class View {
         System.out.println("Insira S ou N apenas.");
     }
 
-    public void escolherCava(int faz) {
+    public void escolherCasa(int faz) {
         if(faz == 1){
-            System.out.print("Escolha uma cava entre 0 e 5: ");
+            System.out.print("Escolha uma casa entre 0 e 5: ");
         }else{
-            System.out.print("Escolha uma cava entre 6 e 11: ");
+            System.out.print("Escolha uma casa entre 6 e 11: ");
         }
     }
 
@@ -39,9 +39,13 @@ public class View {
         System.out.print("O que deseja fazer agora?\n 1 - Proxima Jogada\n 2 - Interromper Jogo\n ->  Acao: ");
     }
 
-    public void capturarSementeCava() {
+    public void capturarSementeCasa() {
         System.out.print(
-                "De qual cava você deseja capturar as sementes adversarias?\n Requisito: A quantidade de sementes na sua cava deve ser igual a 1!");
+                "De qual casa você deseja capturar as sementes adversarias?\n Requisito: A quantidade de sementes na sua casa deve ser igual a 1!");
+    }
+
+    public void cavaVazia(){
+        System.out.println("Escolha uma casa com 1 ou mais sementes!");
     }
 
     public void interromperJogo(){
@@ -67,21 +71,21 @@ public class View {
         }
     }
 
-    // Imprime tds as cavas e silos
-    public void mostrarTabuleiro(ArrayList<CavaSimples> cavasSimples, Silo silo1, Silo silo2, int fazendeiro) {
+    // Imprime tds as casas e silos
+    public void mostrarTabuleiro(ArrayList<CasaSimples> cavasSimples, Silo silo1, Silo silo2, int fazendeiro) {
         System.out.println();
         int s2 = silo2.getQntSementes();
         System.out.print("Silo 2: " + s2 + " ");
         
         for (int i = 11; i > 5; i--) {
             int c = cavasSimples.get(i).getQntSementes();
-            System.out.print("Cava [" + i + "]: " + c + " || ");
+            System.out.print("Casa [" + i + "]: " + c + " || ");
         }
         System.out.println();
         System.out.print("          ");
         for (int i = 0; i < 6; i++) {
             int c = cavasSimples.get(i).getQntSementes();
-            System.out.print("Cava [" + i + "]: " + c + " || ");
+            System.out.print("Casa [" + i + "]: " + c + " || ");
         }
 
         int s1 = silo1.getQntSementes();

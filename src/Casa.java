@@ -1,9 +1,9 @@
-public class Cava
+public class Casa
 {
     // variáveis de instância - substitua o exemplo abaixo pelo seu próprio
     private int campo;
 
-    public Cava()
+    public Casa()
     {
         campo = 0;
     }

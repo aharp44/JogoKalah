@@ -2,7 +2,7 @@
 public class Silo
 {
     // variáveis de instância - substitua o exemplo abaixo pelo seu próprio
-    Cava cavaCampo = new Cava();
+    Casa cavaCampo = new Casa();
 
     public Silo()
     {
@@ -19,7 +19,7 @@ public class Silo
         cavaCampo.addSementes(qnt);
     }
     
-    // remove tds as sementes da cava
+    // remove tds as sementes da casa
     public void removerTdsSementes(){
         cavaCampo.zerarSementes();
     }

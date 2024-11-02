@@ -3,7 +3,7 @@ import java.util.ArrayList;
 public class Fazenda
 {
     // variáveis de instância - substitua o exemplo abaixo pelo seu próprio
-    ArrayList<CavaSimples> cavasSimples = new ArrayList<CavaSimples>();
+    ArrayList<CasaSimples> cavasSimples = new ArrayList<CasaSimples>();
     Silo silo1 = new Silo();
     Silo silo2 = new Silo();
     Fazendeiro fazend = new Fazendeiro();
@@ -11,10 +11,10 @@ public class Fazenda
     
     public Fazenda(){}
     
-    // Coloca 12 cavas com 4 sementes no array cavasSimples
+    // Coloca 12 casas com 4 sementes no array cavasSimples
     public void iniciarJogo(){
         for (int i = 0; i < 12; i++){
-            CavaSimples cs = new CavaSimples();
+            CasaSimples cs = new CasaSimples();
             cs.addSementes(4);
             cavasSimples.add(cs);
         }
@@ -23,7 +23,7 @@ public class Fazenda
     // Instancia a func distribuirSementes em Fazendeiro
     @SuppressWarnings("unchecked")
     public void distribuirSementes(int cavaEscolhida, int fazendeiro){
-        // Calcula a nova qnt de sementes em cada cava e cada silo
+        // Calcula a nova qnt de sementes em cada casa e cada silo
         cavasSimples = fazend.distribuirSementes(cavaEscolhida, cavasSimples, fazendeiro);
         silo1.addSementes(fazend.getQntSementesAdicionaisS1());
         silo2.addSementes(fazend.getQntSementesAdicionaisS2());
@@ -44,7 +44,7 @@ public class Fazenda
     }
     
     // Retorna o array cavasSimples
-    public ArrayList<CavaSimples> getArrayCavas(){
+    public ArrayList<CasaSimples> getArrayCasas(){
         return cavasSimples;
     }
     
