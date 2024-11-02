@@ -1,11 +1,11 @@
-public class CavaSimples
+public class CasaSimples
 {
-    Cava cavaCampo = new Cava();
+    Casa cavaCampo = new Casa();
     
     // Construtor
-    public CavaSimples(){}
+    public CasaSimples(){}
     
-    // retorna a qnt de sementes da cava
+    // retorna a qnt de sementes da casa
     public int getQntSementes(){
         return cavaCampo.getSementes();
     }
@@ -15,12 +15,12 @@ public class CavaSimples
         cavaCampo.addSementes(qnt);
     }
     
-    // remove tds as sementes da cava
+    // remove tds as sementes da casa
     public void removerTdsSementes(){
         cavaCampo.zerarSementes();
     }
 
-    // Mostra qual o índice da cava oposta
+    // Mostra qual o índice da casa oposta
     public int cavaOposta(int id){
         int idOposta = 0;
 
