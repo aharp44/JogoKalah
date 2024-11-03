@@ -9,13 +9,6 @@ public class Kalah {
     // A ARRUMAR AINDA:
     // - a funcao capturar sementes n ta funcionando certo qnd da a volta no tabuleiro todo, ele soma 1 a mais
     // - resolver, se der tempo, print quando seleciona uma casa vazia com 0 semente repetindo duas vezes
-    //
-    // - condições de fim de jogo 
-    //          se o jogador da rodada atual não possuir mais nenhuma semente no seu lado, o jogador adversário deverá pegar
-    //           as sementes restantes no tabuleiro e colocar no próprio silo
-    //              -> Vitória: o jogador que possuir mais sementes no seu próprio silo
-    //              -> Empate: A quantidade de sementes em ambos os silos é igual
-    //
     // - fazer td interface visual se sobrar tempo
 
     public static void main(String[] args) {
