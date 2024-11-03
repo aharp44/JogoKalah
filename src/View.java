@@ -52,6 +52,16 @@ public class View {
         System.out.println("O jogo foi interrompido\n\n");
     }
 
+    public void fazendeiroVencedor(int fazendeiro){
+        if(fazendeiro == 1){
+            System.out.println("\n\nO fazendeiro 1 venceu o jogo!\n\n");
+        }else if(fazendeiro == 2){
+            System.out.println("\n\nO fazendeiro 2 venceu o jogo!\n\n");
+        }else{
+            System.out.println("\n\nOcorreu um empate! Ninguém venceu o jogo.\n\n");
+        }
+    }
+
     public void fimDeJogo(int vencedor){
         System.out.println("Fim de jogo! Vencedor: ");
         // Verifica se houve empate

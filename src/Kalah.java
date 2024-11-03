@@ -1,3 +1,5 @@
+import java.util.ArrayList;
+
 public class Kalah {
     Fazenda fazenda = new Fazenda();
     Input input = new Input();
@@ -30,6 +32,55 @@ public class Kalah {
         }
     }
 
+    // Determina qual o vencedor do jogo seguindo as regras padrões
+    boolean jogoAcabou = false;
+    private void fimDeJogo(ArrayList<CasaSimples> casasSimples, int vezFazendeiro, Silo silo1, Silo silo2){
+        // Ver qual fazendeiro vai jogar agora e Verificar lado do tabuleiro deste fazendeiro
+        if(vezFazendeiro == 1){
+            // Verifica lado do fazendeiro 1 se ainda há alguma semente
+            for(int i = 0; i <= Math.floor(casasSimples.size() / 2); i++){
+                CasaSimples casaAtual = casasSimples.get(i);
+                if(casaAtual.getQntSementes() != 0) return;
+            }
+
+            // Se as sementes deste lado acabarem, jogam-se as sementes restantes do lado oposto no silo adversário
+            CasaSimples casaAtual;
+            int sementesRestantes;
+            for(int i = 6; i <= casasSimples.size(); i++){
+                casaAtual = casasSimples.get(i);
+                sementesRestantes = casaAtual.getQntSementes();
+                silo2.addSementes(sementesRestantes);
+            }
+
+        }else{
+            // Verifica lado do fazendeiro 2 se ainda há alguma semente
+            for(int i = 6; i <= casasSimples.size(); i++){
+                CasaSimples casaAtual = casasSimples.get(i);
+                if(casaAtual.getQntSementes() != 0) return;
+            }
+
+            // Se as sementes deste lado acabarem, jogam-se as sementes restantes do lado oposto no silo adversário
+            CasaSimples casaAtual;
+            int sementesRestantes;
+            for(int i = 0; i <= Math.floor(casasSimples.size() / 2); i++){
+                casaAtual = casasSimples.get(i);
+                sementesRestantes = casaAtual.getQntSementes();
+                silo1.addSementes(sementesRestantes);
+            }
+        }
+
+        // Decide qual jogador venceu o jogo
+        if(silo1.getQntSementes() > silo2.getQntSementes()){
+            visualizar.fazendeiroVencedor(1);
+        }else if(silo2.getQntSementes() > silo1.getQntSementes()){
+            visualizar.fazendeiroVencedor(2);
+        }else{
+            visualizar.fazendeiroVencedor(0);
+        }
+
+        jogoAcabou = true;
+    }
+
     void Jogo() {
         int acao;
 
@@ -53,8 +104,10 @@ public class Kalah {
                     visualizar.vezJogador(fazendeiro);
                     fazenda.distribuirSementes(input.escolherCasa(fazendeiro, fazenda.getArrayCasas()), fazendeiro);
                     input.mostrarTabuleiro(fazenda.getArrayCasas(), fazenda.getSilo1(), fazenda.getSilo2(), fazendeiro);
-                    // Verifica se o jogo acabou
-                    if(fazenda.fimDeJogo()){
+
+                    // Verifica se o jogo acabou ou dá continuidade ao mesmo
+                    fimDeJogo(fazenda.getArrayCasas(), fazendeiro, fazenda.silo1, fazenda.silo2);
+                    if(jogoAcabou){
                         visualizar.fimDeJogo(fazenda.getVencedor());
                     } else{
                         acao = input.sistemaDecisao();
