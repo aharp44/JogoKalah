@@ -1,3 +1,4 @@
+package Model;
 public class Casa
 {
     // variáveis de instância - substitua o exemplo abaixo pelo seu próprio

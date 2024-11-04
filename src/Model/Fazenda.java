@@ -1,9 +1,12 @@
+package Model;
 import java.util.ArrayList;
+
+import Controller.Input;
 
 public class Fazenda
 {
     // variáveis de instância - substitua o exemplo abaixo pelo seu próprio
-    ArrayList<CasaSimples> cavasSimples = new ArrayList<CasaSimples>();
+    ArrayList<CasaSimples> casasSimples = new ArrayList<CasaSimples>();
     Silo silo1 = new Silo();
     Silo silo2 = new Silo();
     Fazendeiro fazend = new Fazendeiro();
@@ -11,27 +14,27 @@ public class Fazenda
     
     public Fazenda(){}
     
-    // Coloca 12 casas com 4 sementes no array cavasSimples
+    // Coloca 12 casas com 4 sementes no array casasSimples
     public void iniciarJogo(){
         for (int i = 0; i < 12; i++){
             CasaSimples cs = new CasaSimples();
             cs.addSementes(4);
-            cavasSimples.add(cs);
+            casasSimples.add(cs);
         }
     }
     
     // Instancia a func distribuirSementes em Fazendeiro
     @SuppressWarnings("unchecked")
-    public void distribuirSementes(int cavaEscolhida, int fazendeiro){
+    public void distribuirSementes(int casaEscolhida, int fazendeiro){
         // Calcula a nova qnt de sementes em cada casa e cada silo
-        cavasSimples = fazend.distribuirSementes(cavaEscolhida, cavasSimples, fazendeiro);
+        casasSimples = fazend.distribuirSementes(casaEscolhida, casasSimples, fazendeiro);
         silo1.addSementes(fazend.getQntSementesAdicionaisS1());
         silo2.addSementes(fazend.getQntSementesAdicionaisS2());
     }
 
     // Retorna TRUE caso o jogo tenha terminado
     public boolean fimDeJogo(){
-        return fazend.fimDeJogo(cavasSimples);
+        return fazend.fimDeJogo(casasSimples);
     }
 
     public int getVencedor(){
@@ -43,9 +46,9 @@ public class Fazenda
         return fazend.getMaisUmaJogada();
     }
     
-    // Retorna o array cavasSimples
+    // Retorna o array casasSimples
     public ArrayList<CasaSimples> getArrayCasas(){
-        return cavasSimples;
+        return casasSimples;
     }
     
     // Retorna o silo 1

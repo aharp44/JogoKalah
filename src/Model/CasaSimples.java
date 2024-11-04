@@ -1,27 +1,25 @@
-public class CasaSimples
+package Model;
+public class CasaSimples implements ICasaSimples
 {
-    Casa cavaCampo = new Casa();
-    
-    // Construtor
-    public CasaSimples(){}
+    Casa casaCampo = new Casa();
     
     // retorna a qnt de sementes da casa
     public int getQntSementes(){
-        return cavaCampo.getSementes();
+        return casaCampo.getSementes();
     }
     
     // adiciona uma quantidade de sementes
     public void addSementes(int qnt){
-        cavaCampo.addSementes(qnt);
+        casaCampo.addSementes(qnt);
     }
     
     // remove tds as sementes da casa
     public void removerTdsSementes(){
-        cavaCampo.zerarSementes();
+        casaCampo.zerarSementes();
     }
 
     // Mostra qual o índice da casa oposta
-    public int cavaOposta(int id){
+    public int casaOposta(int id){
         int idOposta = 0;
 
         // Mapeamento dos opostos

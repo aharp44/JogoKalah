@@ -1,13 +1,20 @@
 import java.util.ArrayList;
 
+import Controller.Input;
+import Controller.IInput;
+import Model.CasaSimples;
+import Model.Fazenda;
+import Model.Silo;
+import View.View;
+
 public class Kalah {
     Fazenda fazenda = new Fazenda();
-    Input input = new Input();
+    IInput input = new Input();
     View visualizar = new View();
     int fazendeiro = 1, rodada = 1;
 
     // A ARRUMAR AINDA:
-    // - fazer td interface visual se sobrar tempo
+    // - fazer td interface visual
 
     public static void main(String[] args) {
         Kalah kalahJogo = new Kalah();        
@@ -99,7 +106,7 @@ public class Kalah {
                     rodada++;
 
                     // Verifica se o jogo acabou ou se dá continuidade ao mesmo
-                    fimDeJogo(fazenda.getArrayCasas(), fazendeiro, fazenda.silo1, fazenda.silo2);
+                    fimDeJogo(fazenda.getArrayCasas(), fazendeiro, fazenda.getSilo1(), fazenda.getSilo2());
                     if(jogoAcabou){
                         acao = 2;
                     } else{

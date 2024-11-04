@@ -1,32 +1,21 @@
-
-public class Silo
+package Model;
+public class Silo implements ISilo
 {
     // variáveis de instância - substitua o exemplo abaixo pelo seu próprio
-    Casa cavaCampo = new Casa();
-
-    public Silo()
-    {
-        
-    }
+    Casa casaCampo = new Casa();
     
     // retorna a qnt de sementes
     public int getQntSementes(){
-        return cavaCampo.getSementes();
+        return casaCampo.getSementes();
     }
     
     // adiciona uma qnt de sementes
     public void addSementes(int qnt){
-        cavaCampo.addSementes(qnt);
+        casaCampo.addSementes(qnt);
     }
     
     // remove tds as sementes da casa
     public void removerTdsSementes(){
-        cavaCampo.zerarSementes();
+        casaCampo.zerarSementes();
     }
-    
-
-    
-    
-
-    
 }

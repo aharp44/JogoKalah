@@ -1,8 +1,9 @@
+package View;
 
 import java.util.ArrayList;
 
-import CasaSimples;
-import Silo;
+import Model.CasaSimples;
+import Model.Silo;
 
 public class View {
     public View() {}
@@ -48,7 +49,7 @@ public class View {
                 "De qual casa você deseja capturar as sementes adversarias?\n Requisito: A quantidade de sementes na sua casa deve ser igual a 1!");
     }
 
-    public void cavaVazia(){
+    public void casaVazia(){
         System.out.println("Escolha uma casa com 1 ou mais sementes!");
     }
 
@@ -86,19 +87,19 @@ public class View {
     }
 
     // Imprime tds as casas e silos
-    public void mostrarTabuleiro(ArrayList<CasaSimples> cavasSimples, Silo silo1, Silo silo2, int fazendeiro) {
+    public void mostrarTabuleiro(ArrayList<CasaSimples> casasSimples, Silo silo1, Silo silo2, int fazendeiro) {
         System.out.println();
         int s2 = silo2.getQntSementes();
         System.out.print("Silo 2: " + s2 + " ");
         
         for (int i = 11; i > 5; i--) {
-            int c = cavasSimples.get(i).getQntSementes();
+            int c = casasSimples.get(i).getQntSementes();
             System.out.print("Casa [" + i + "]: " + c + " || ");
         }
         System.out.println();
         System.out.print("          ");
         for (int i = 0; i < 6; i++) {
-            int c = cavasSimples.get(i).getQntSementes();
+            int c = casasSimples.get(i).getQntSementes();
             System.out.print("Casa [" + i + "]: " + c + " || ");
         }
 

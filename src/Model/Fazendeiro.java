@@ -1,3 +1,4 @@
+package Model;
 import java.util.ArrayList;
 
 public class Fazendeiro {
@@ -10,10 +11,10 @@ public class Fazendeiro {
 
     // Distribui as sementes da casa escolhida e captura-as se possivel
     @SuppressWarnings("rawtypes")
-    public ArrayList distribuirSementes(int cavaEscolhida, ArrayList<CasaSimples> cavasSimples, int fazendeiro) {
+    public ArrayList distribuirSementes(int casaEscolhida, ArrayList<CasaSimples> casasSimples, int fazendeiro) {
 
-        CasaSimples inicial = cavasSimples.get(cavaEscolhida);
-        int cavaAtual = cavaEscolhida;
+        CasaSimples inicial = casasSimples.get(casaEscolhida);
+        int casaAtual = casaEscolhida;
         boolean emSilo = false;
         semsAAdicionarS1 = 0;           // Armazena a qnt de sementes a serem adicionadas no silo 1
         semsAAdicionarS2 = 0;           // Armazena a qnt de sementes a serem adicionadas no silo 2
@@ -21,28 +22,28 @@ public class Fazendeiro {
 
         // Distribui 1 semente em cada casa seguinte ateh o numero de sementes acabar
         for (int i=0; i < inicial.getQntSementes(); i++){
-            cavaAtual++;
+            casaAtual++;
 
             // Reseta a posicao qnd chega no fim das casas
-            if(cavaAtual == 12){
-                cavaAtual = 0;
+            if(casaAtual == 12){
+                casaAtual = 0;
             }
 
             // Verifica se esta ou nao em um silo
-            if(cavaAtual == 6 && emSilo == false && fazendeiro == 1){
+            if(casaAtual == 6 && emSilo == false && fazendeiro == 1){
                 // Adiciona 1sem pro silo 1
                 emSilo = true;
                 semsAAdicionarS1++;
-                cavaAtual--;
-            } else if (cavaAtual == 0 && emSilo == false && fazendeiro == 2){
+                casaAtual--;
+            } else if (casaAtual == 0 && emSilo == false && fazendeiro == 2){
                 // Adiciona 1sem pro silo 2
                 emSilo = true;
                 semsAAdicionarS2++;
-                cavaAtual--;
+                casaAtual--;
             } else{
                 // Adiciona 1sem na casa atual
                 emSilo = false;
-                cavasSimples.get(cavaAtual).addSementes(1);
+                casasSimples.get(casaAtual).addSementes(1);
             }
         }
         inicial.removerTdsSementes();       // Remove tds as sementes da casa escolhida
@@ -50,32 +51,32 @@ public class Fazendeiro {
         // Verifica se a ultima semente semeada caiu no silo
         if(emSilo == true){
             // Verifica se este silo pertence ao jogador
-            if(cavaAtual == 5 && fazendeiro == 1){
+            if(casaAtual == 5 && fazendeiro == 1){
                 // REPETE A JOGADA
                 maisUmaJogada = true;
-            }else if(cavaAtual == -1 && fazendeiro == 2){
+            }else if(casaAtual == -1 && fazendeiro == 2){
                 maisUmaJogada = true;
             }
         }
 
         // Verifica se eh possivel capturar as sementes
-        else if(capturarSementes(cavaAtual, cavasSimples, fazendeiro)){
+        else if(capturarSementes(casaAtual, casasSimples, fazendeiro)){
             // Captura as sementes
-            capturaDeSementes(cavaAtual, cavasSimples, fazendeiro);
+            capturaDeSementes(casaAtual, casasSimples, fazendeiro);
         }
 
-        return cavasSimples;                // Retorna todo o array de casas novo
+        return casasSimples;                // Retorna todo o array de casas novo
     }
 
     // Retorna TRUE se for possivel capturar as sementes do adversario, e captura se sim
-    public boolean capturarSementes(int ultimaCasa, ArrayList<CasaSimples> cavaSimples, int fazendeiro){
+    public boolean capturarSementes(int ultimaCasa, ArrayList<CasaSimples> casaSimples, int fazendeiro){
         boolean possivel = false;
-        CasaSimples casa = cavaSimples.get(ultimaCasa);
+        CasaSimples casa = casaSimples.get(ultimaCasa);
 
         // Verifica se a ultima casa estava vazia antes de distribuir
         if(casa.getQntSementes() == 1){
             // Verifica se a casa oposta tem pelo menos 1 semente
-            if(cavaSimples.get(casa.cavaOposta(ultimaCasa)).getQntSementes() >= 1){
+            if(casaSimples.get(casa.casaOposta(ultimaCasa)).getQntSementes() >= 1){
                 // Verifica se a ultima casa pertence ao jogador
                 if(fazendeiro == 1 && ultimaCasa >= 0 && ultimaCasa <=5){
                     possivel = true;
@@ -88,20 +89,20 @@ public class Fazendeiro {
     }
 
     // Captura as sementes da casa e da casa oposta e joga pro silo
-    public void capturaDeSementes(int cavaEscolhida, ArrayList<CasaSimples> cavaSimples, int fazendeiro) {
+    public void capturaDeSementes(int casaEscolhida, ArrayList<CasaSimples> casaSimples, int fazendeiro) {
         // Pega todas as sementes da casa oposta, incluindo a da própira semeadura e joga para o silo daquele jogador que executou a jogada
-        CasaSimples casa = cavaSimples.get(cavaEscolhida);
-        CasaSimples cavaAdversaria = cavaSimples.get(casa.cavaOposta(cavaEscolhida));
+        CasaSimples casa = casaSimples.get(casaEscolhida);
+        CasaSimples casaAdversaria = casaSimples.get(casa.casaOposta(casaEscolhida));
 
         // Adiciona as sementes pro silo
         if(fazendeiro == 1){
-            semsAAdicionarS1 += casa.getQntSementes() + cavaAdversaria.getQntSementes();
+            semsAAdicionarS1 += casa.getQntSementes() + casaAdversaria.getQntSementes();
         } else{
-            semsAAdicionarS2 += casa.getQntSementes() + cavaAdversaria.getQntSementes();
+            semsAAdicionarS2 += casa.getQntSementes() + casaAdversaria.getQntSementes();
         }
         // Remove as sementes das casas
         casa.removerTdsSementes();
-        cavaAdversaria.removerTdsSementes();
+        casaAdversaria.removerTdsSementes();
     }
 
     // Retorna TRUE caso o jogador ganhe mais uma jogada
@@ -110,11 +111,11 @@ public class Fazendeiro {
     }
 
     // Retorna TRUE caso o jogo tenha terminado
-    public boolean fimDeJogo(ArrayList<CasaSimples> cavasSimples){
+    public boolean fimDeJogo(ArrayList<CasaSimples> casasSimples){
         boolean ret = true;
         // roda as 12 casas verificando se estao tds vazias
         for(int i=0; i<=11; i++){
-            if(cavasSimples.get(i).getQntSementes() != 0){
+            if(casasSimples.get(i).getQntSementes() != 0){
                 ret = false;
                 break;
             }
