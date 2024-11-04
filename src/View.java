@@ -1,4 +1,8 @@
+
 import java.util.ArrayList;
+
+import CasaSimples;
+import Silo;
 
 public class View {
     public View() {}
@@ -54,11 +58,11 @@ public class View {
 
     public void fazendeiroVencedor(int fazendeiro){
         if(fazendeiro == 1){
-            System.out.println("\n\nO fazendeiro 1 venceu o jogo!\n\n");
+            System.out.println("\nO fazendeiro 1 venceu o jogo!\n\n");
         }else if(fazendeiro == 2){
-            System.out.println("\n\nO fazendeiro 2 venceu o jogo!\n\n");
+            System.out.println("\nO fazendeiro 2 venceu o jogo!\n\n");
         }else{
-            System.out.println("\n\nOcorreu um empate! Ninguém venceu o jogo.\n\n");
+            System.out.println("\nOcorreu um empate! Ninguém venceu o jogo.\n\n");
         }
     }
 
@@ -73,11 +77,11 @@ public class View {
     }
 
     // Mostra visualmente qual fazendeiro ira jogar agora
-    public void vezJogador(int fazendeiro){
+    public void vezJogador(int fazendeiro, int rodada){
         if(fazendeiro == 1){
-            System.out.println("\nVez do Fazendeiro 1");
+            System.out.println("\nVez do Fazendeiro 1 - Rodada " + rodada);
         }else{
-            System.out.println("\nVez do Fazendeiro 2");
+            System.out.println("\nVez do Fazendeiro 2 - Rodada " + rodada);
         }
     }
 

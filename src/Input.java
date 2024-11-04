@@ -1,4 +1,5 @@
 import java.util.Scanner;
+
 import java.util.InputMismatchException;
 import java.util.ArrayList;
 
@@ -61,9 +62,7 @@ public class Input {
                     if((posicao < 0 || posicao > 5)){
                         view.numeroInvalido(fazendeiro);
                     }
-                    if(checarCasaVazia(cavasSimples, posicao)){
-                        view.escolherCasa(fazendeiro);
-                    }
+                    view.escolherCasa(fazendeiro);
                     posicao = scanner.nextInt();
                 }
             } else {
@@ -71,9 +70,7 @@ public class Input {
                     if((posicao < 6 || posicao > 11)){
                         view.numeroInvalido(fazendeiro);
                     }
-                    if(checarCasaVazia(cavasSimples, posicao)){
-                        view.escolherCasa(fazendeiro);
-                    }
+                    view.escolherCasa(fazendeiro);
                     posicao = scanner.nextInt();
                 }
             }
