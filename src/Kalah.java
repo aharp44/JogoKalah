@@ -5,12 +5,15 @@ import Controller.IInput;
 import Model.CasaSimples;
 import Model.Fazenda;
 import Model.Silo;
+import Tests.Teste;
+import Tests.ITestes;
 import View.View;
 
 public class Kalah {
     Fazenda fazenda = new Fazenda();
     IInput input = new Input();
     View visualizar = new View();
+    ITestes testes = new Teste();
     int fazendeiro = 1, rodada = 1;
 
     public static void main(String[] args) {
@@ -77,6 +80,14 @@ public class Kalah {
     }
 
     void Jogo() {
+        /** TESTES
+        fazenda.iniciarJogo();
+        ArrayList<CasaSimples> casasSimples = fazenda.getArrayCasas();
+        testes.rouboDeSementes(casasSimples, fazenda);
+        //testes.casaVaziaEscolhida(casasSimples);
+        //testes.decisaoVencedor(fazenda.getSilo1(), fazenda.getSilo2());
+         */
+
         int acao;
 
         // Referente a primeira jogada possível

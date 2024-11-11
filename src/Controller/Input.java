@@ -1,10 +1,10 @@
 package Controller;
-import java.util.Scanner;
 
 import Model.CasaSimples;
 import Model.Silo;
 import View.View;
 
+import java.util.Scanner;
 import java.util.InputMismatchException;
 import java.util.ArrayList;
 
