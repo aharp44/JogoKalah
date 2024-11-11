@@ -8,7 +8,6 @@ public class CasaSimples extends Casa implements ICasaSimples{
     public void addUmaSemente(){
         campo++;
     }
-    
 
     // Mostra qual o índice da casa oposta
     public int casaOposta(int id){

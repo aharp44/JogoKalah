@@ -1,4 +1,5 @@
 package Model;
+
 public class Casa{
     protected int campo;
 
