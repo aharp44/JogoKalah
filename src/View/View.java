@@ -1,9 +1,8 @@
 package View;
 
-import java.util.ArrayList;
-
 import Model.CasaSimples;
 import Model.Silo;
+import java.util.ArrayList;
 
 public class View {
     public View() {}
@@ -89,22 +88,45 @@ public class View {
     // Imprime tds as casas e silos
     public void mostrarTabuleiro(ArrayList<CasaSimples> casasSimples, Silo silo1, Silo silo2, int fazendeiro) {
         System.out.println();
-        int s2 = silo2.getQntSementes();
-        System.out.print("Silo 2: " + s2 + " ");
-        
+
+        // Parte superior - Silo do Jogador 2
+        System.out.printf("         Fazendeiro 2 (Silo 2: %2d)\n", silo2.getQntSementes());
+        System.out.println();
+
+        // Índice das casas de cima (11 a 6) - Alinhado com as casas
         for (int i = 11; i > 5; i--) {
-            int c = casasSimples.get(i).getQntSementes();
-            System.out.print("Casa [" + i + "]: " + c + " || ");
+            System.out.printf("   %2d  ", i);
         }
         System.out.println();
-        System.out.print("          ");
-        for (int i = 0; i < 6; i++) {
-            int c = casasSimples.get(i).getQntSementes();
-            System.out.print("Casa [" + i + "]: " + c + " || ");
-        }
+        System.out.println("╔═════════════════════════════════════════╗");
 
-        int s1 = silo1.getQntSementes();
-        System.out.println("Silo 1: " + s1 + " ");
+        // Linha das casas de cima
+        System.out.print("║");
+        for (int i = 11; i > 5; i--) {
+            System.out.printf("  %2d  ║", casasSimples.get(i).getQntSementes());
+        }
+        System.out.println();
+
+        // Divisor entre as casas de cima e de baixo
+        System.out.println("╠══════╬══════╬══════╬══════╬══════╬══════╣");
+
+        // Linha das casas de baixo
+        System.out.print("║");
+        for (int i = 0; i < 6; i++) {
+            System.out.printf("  %2d  ║", casasSimples.get(i).getQntSementes());
+        }
+        System.out.println();
+        System.out.println("╚═════════════════════════════════════════╝");
+
+        // Índice das casas de baixo (0 a 5) - Alinhado com as casas
+        for (int i = 0; i < 6; i++) {
+            System.out.printf("   %2d  ", i);
+        }
+        System.out.println();
+        System.out.println();
+
+        // Parte inferior - Silo do Jogador 1
+        System.out.printf("         Fazendeiro 1 (Silo 1: %2d)\n", silo1.getQntSementes());
         System.out.println();
     }
 }
