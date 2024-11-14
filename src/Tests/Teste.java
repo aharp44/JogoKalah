@@ -7,12 +7,13 @@ import Controller.Input;
 import Model.CasaSimples;
 import Model.Fazenda;
 import Model.Silo;
+import Model.Turno;
 import View.View;
 
 public class Teste implements ITestes {
   View visual = new View();
   IInput input = new Input();
-  int fazendeiro = 1;
+  Turno turnoAtual = Turno.FAZENDEIRO_A;
 
   // Simula a situação de roubo de sementes
   public void rouboDeSementes(ArrayList<CasaSimples> casasSimples, Fazenda fazenda) {
@@ -24,8 +25,8 @@ public class Teste implements ITestes {
 
     casa1.addUmaSemente();
 
-    visual.mostrarTabuleiro(casasSimples, fazenda.getSilo1(), fazenda.getSilo2(), 1);
-    fazenda.distribuirSementes(2, 1);
+    visual.mostrarTabuleiro(casasSimples, fazenda.getSilo1(), fazenda.getSilo2(), turnoAtual);
+    fazenda.distribuirSementes(2, turnoAtual);
   }
 
   // Simula a situação de se o jogador escolher uma
@@ -51,5 +52,15 @@ public class Teste implements ITestes {
     } else {
       visual.fazendeiroVencedor(0);
     }
+  }
+
+  public static void main(String[] args) {
+    Fazenda fazenda = new Fazenda();
+    Teste teste = new Teste();
+    fazenda.iniciarJogo();
+    ArrayList<CasaSimples> casasSimples = fazenda.getArrayCasas();
+    teste.rouboDeSementes(casasSimples, fazenda);
+    // teste.casaVaziaEscolhida(casasSimples);
+    // teste.decisaoVencedor(fazenda.getSilo1(), fazenda.getSilo2());
   }
 }

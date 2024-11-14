@@ -6,14 +6,16 @@ public class Fazendeiro {
     private int semsAAdicionarS1 = 0;
     private int semsAAdicionarS2 = 0;
     private boolean maisUmaJogada = false;
+    private static final int siloFazendeiroA = 5;
+    private static final int siloFazendeiroB = -1;
 
     public Fazendeiro() {}
 
     // Distribui as sementes da casa escolhida e captura-as se possivel
     @SuppressWarnings("rawtypes")
-    public ArrayList distribuirSementes(int casaEscolhida, ArrayList<CasaSimples> casasSimples, int fazendeiro) {
+    public ArrayList distribuirSementes(int casaEscolhida, ArrayList<CasaSimples> ListCasasSimples, Turno turnoAtual) {
 
-        CasaSimples inicial = casasSimples.get(casaEscolhida);
+        Casa inicial = ListCasasSimples.get(casaEscolhida);
         int casaAtual = casaEscolhida;
         boolean emSilo = false;
         semsAAdicionarS1 = 0;           // Armazena a qnt de sementes a serem adicionadas no silo 1
@@ -30,12 +32,12 @@ public class Fazendeiro {
             }
 
             // Verifica se esta ou nao em um silo
-            if(casaAtual == 6 && emSilo == false && fazendeiro == 1){
+            if(casaAtual == 6 && emSilo == false && turnoAtual == Turno.FAZENDEIRO_A){
                 // Adiciona 1sem pro silo 1
                 emSilo = true;
                 semsAAdicionarS1++;
                 casaAtual--;
-            } else if (casaAtual == 0 && emSilo == false && fazendeiro == 2){
+            } else if (casaAtual == 0 && emSilo == false && turnoAtual == Turno.FAZENDEIRO_B){
                 // Adiciona 1sem pro silo 2
                 emSilo = true;
                 semsAAdicionarS2++;
@@ -43,7 +45,7 @@ public class Fazendeiro {
             } else{
                 // Adiciona 1sem na casa atual
                 emSilo = false;
-                casasSimples.get(casaAtual).addUmaSemente();
+                ListCasasSimples.get(casaAtual).addUmaSemente();
             }
         }
         inicial.zerarSementes();       // Remove tds as sementes da casa escolhida
@@ -51,36 +53,38 @@ public class Fazendeiro {
         // Verifica se a ultima semente semeada caiu no silo
         if(emSilo == true){
             // Verifica se este silo pertence ao jogador
-            if(casaAtual == 5 && fazendeiro == 1){
+            if(casaAtual == siloFazendeiroA && turnoAtual == Turno.FAZENDEIRO_A){
                 // REPETE A JOGADA
                 maisUmaJogada = true;
-            }else if(casaAtual == -1 && fazendeiro == 2){
+            }else if(casaAtual == siloFazendeiroB && turnoAtual == Turno.FAZENDEIRO_B){
                 maisUmaJogada = true;
             }
         }
 
         // Verifica se eh possivel capturar as sementes
-        else if(capturarSementes(casaAtual, casasSimples, fazendeiro)){
+        else if(capturarSementes(casaAtual, ListCasasSimples, turnoAtual)){
             // Captura as sementes
-            capturaDeSementes(casaAtual, casasSimples, fazendeiro);
+            capturaDeSementes(casaAtual, ListCasasSimples, turnoAtual);
         }
 
-        return casasSimples;                // Retorna todo o array de casas novo
+        return ListCasasSimples;                // Retorna todo o array de casas novo
     }
 
     // Retorna TRUE se for possivel capturar as sementes do adversario, e captura se sim
-    public boolean capturarSementes(int ultimaCasa, ArrayList<CasaSimples> casaSimples, int fazendeiro){
+    public boolean capturarSementes(int ultimaCasa, ArrayList<CasaSimples> casaSimples, Turno turnoAtual){
         boolean possivel = false;
         CasaSimples casa = casaSimples.get(ultimaCasa);
 
         // Verifica se a ultima casa estava vazia antes de distribuir
         if(casa.getQntSementes() == 1){
             // Verifica se a casa oposta tem pelo menos 1 semente
-            if(casaSimples.get(casa.casaOposta(ultimaCasa)).getQntSementes() >= 1){
+            int numCasaOp = casa.casaOposta(ultimaCasa);
+            CasaSimples CasaOp = casaSimples.get(numCasaOp);
+            if(CasaOp.getQntSementes() >= 1){
                 // Verifica se a ultima casa pertence ao jogador
-                if(fazendeiro == 1 && ultimaCasa >= 0 && ultimaCasa <=5){
+                if(turnoAtual == Turno.FAZENDEIRO_A && ultimaCasa >= 0 && ultimaCasa <=5){
                     possivel = true;
-                } else if(fazendeiro == 2 && ultimaCasa >= 6 && ultimaCasa <=11){
+                } else if(turnoAtual == Turno.FAZENDEIRO_B && ultimaCasa >= 6 && ultimaCasa <=11){
                     possivel = true;
                 }
             }
@@ -89,13 +93,13 @@ public class Fazendeiro {
     }
 
     // Captura as sementes da casa e da casa oposta e joga pro silo
-    public void capturaDeSementes(int casaEscolhida, ArrayList<CasaSimples> casaSimples, int fazendeiro) {
+    public void capturaDeSementes(int casaEscolhida, ArrayList<CasaSimples> casaSimples, Turno turnoAtual) {
         // Pega todas as sementes da casa oposta, incluindo a da própira semeadura e joga para o silo daquele jogador que executou a jogada
         CasaSimples casa = casaSimples.get(casaEscolhida);
         CasaSimples casaAdversaria = casaSimples.get(casa.casaOposta(casaEscolhida));
 
         // Adiciona as sementes pro silo
-        if(fazendeiro == 1){
+        if(turnoAtual == Turno.FAZENDEIRO_A){
             semsAAdicionarS1 += casa.getQntSementes() + casaAdversaria.getQntSementes();
         } else{
             semsAAdicionarS2 += casa.getQntSementes() + casaAdversaria.getQntSementes();
@@ -111,11 +115,11 @@ public class Fazendeiro {
     }
 
     // Retorna TRUE caso o jogo tenha terminado
-    public boolean fimDeJogo(ArrayList<CasaSimples> casasSimples){
+    public boolean fimDeJogo(ArrayList<CasaSimples> ListCasasSimples){
         boolean ret = true;
         // roda as 12 casas verificando se estao tds vazias
         for(int i=0; i<=11; i++){
-            if(casasSimples.get(i).getQntSementes() != 0){
+            if(ListCasasSimples.get(i).getQntSementes() != 0){
                 ret = false;
                 break;
             }

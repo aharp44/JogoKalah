@@ -2,7 +2,7 @@ package Model;
 
 public class CasaSimples extends Casa implements ICasaSimples{
     CasaSimples(){
-        super(4);
+        super(1);
     }
     
     public void addUmaSemente(){
