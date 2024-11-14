@@ -2,6 +2,8 @@ package View;
 
 import Model.CasaSimples;
 import Model.Silo;
+import Model.Turno;
+
 import java.util.ArrayList;
 
 public class View {
@@ -15,8 +17,8 @@ public class View {
         System.out.println("Insira S ou N apenas.");
     }
 
-    public void escolherCasa(int faz) {
-        if(faz == 1){
+    public void escolherCasa(Turno turnoAtual) {
+        if(turnoAtual == Turno.FAZENDEIRO_A){
             System.out.print("Escolha uma casa entre 0 e 5: ");
         }else{
             System.out.print("Escolha uma casa entre 6 e 11: ");
@@ -27,8 +29,8 @@ public class View {
         System.out.println("Insira um valor numerico. ");
     }
 
-    public void numeroInvalido(int faz) {
-        if(faz == 1){
+    public void numeroInvalido(Turno turnoAtual) {
+        if(turnoAtual == Turno.FAZENDEIRO_A){
             System.out.println("Insira um numero entre 0 e 5 apenas. ");
         }else{
             System.out.println("Insira um numero entre 6 e 11 apenas. ");
@@ -77,8 +79,8 @@ public class View {
     }
 
     // Mostra visualmente qual fazendeiro ira jogar agora
-    public void vezJogador(int fazendeiro, int rodada){
-        if(fazendeiro == 1){
+    public void vezJogador(Turno turnoAtual, int rodada){
+        if(turnoAtual == Turno.FAZENDEIRO_A){
             System.out.println("\nVez do Fazendeiro 1 - Rodada " + rodada);
         }else{
             System.out.println("\nVez do Fazendeiro 2 - Rodada " + rodada);
@@ -86,7 +88,7 @@ public class View {
     }
 
     // Imprime tds as casas e silos
-    public void mostrarTabuleiro(ArrayList<CasaSimples> casasSimples, Silo silo1, Silo silo2, int fazendeiro) {
+    public void mostrarTabuleiro(ArrayList<CasaSimples> casasSimples, Silo silo1, Silo silo2, Turno turnoAtual) {
         System.out.println();
 
         // Parte superior - Silo do Jogador 2
